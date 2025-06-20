@@ -1,0 +1,1 @@
+#include "tests/basic.asm" ; Should produce same result as basic.asm
