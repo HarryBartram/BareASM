@@ -1,6 +1,6 @@
-# Bare Assembler (BASM) #
+# Bare Assembler (BareASM) #
 
-Bare assembler or BASM is an assembler designed for use in the development of operating systems
+Bare assembler or BareASM is an assembler designed for use in the development of operating systems
 
 ## Output Formats ##
 
@@ -12,7 +12,7 @@ Output formats include: binary and ELF. Only targets x86-64 machines but can pro
 
 Symbols may include any alphanumeric character upper or lowercase and the following characters: '_', '?', '!'. However they cannot begin with a number.
 
-BASM includes predefined symbols that cannot be overwritten these all begin with '__'.
+BareASM includes predefined symbols that cannot be overwritten these all begin with '__'.
 
 Full list of predefined symbols:
  - __HERE - Refers to the address of the beginning of the current line.
@@ -31,7 +31,7 @@ Other formats:
 
 ### Expressions ###
 
-Numeric expressions in BASM are evaluated as 64-bit signed integers, there size will then be adjusted accordingly.
+Numeric expressions in BareASM are evaluated as 64-bit signed integers, there size will then be adjusted accordingly.
 
 Full list of operators(in order of precedence):
  - '+','-' - Carries out addition and subtraction respectively.
@@ -94,7 +94,7 @@ Single line comments begin with ';' and continue until the end of the line.
 
 ## Instructions ##
 
-The following is a full list of the instructions supported by BASM.
+The following is a full list of the instructions supported by BareASM.
 
 Instructions are not case sensitive.
 
