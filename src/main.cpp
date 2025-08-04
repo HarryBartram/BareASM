@@ -11,5 +11,9 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    if (!assembler.Assemble()) {
+        return 2;
+    }
+
     return 0;
 }

@@ -1,6 +1,8 @@
 #include "../inc/assembler.hpp"
+#include "../inc/preprocessor.hpp"
 
 #include <cstring>
+#include <iostream>
 
 // PRIVATE
 
@@ -83,4 +85,19 @@ Assembler::Assembler(int argc, char **argv) : success(true), inputFilename(""), 
     if (context != CLIContext::InputFilename) {
         this->success = false;
     }
+}
+
+bool Assembler::Assemble()
+{
+    Preprocessor preprocessor = Preprocessor(this->inputFilename);
+    if (!preprocessor.success) {
+        std::cerr << "ERROR: Input file, " << this->inputFilename << ", does not exist or is inaccessible" << std::endl;
+        return false;
+    }
+
+    if (!preprocessor.Preprocess()) {
+        return false;
+    }
+
+    return true;
 }

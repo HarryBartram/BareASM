@@ -25,4 +25,6 @@ public:
     bool success;
 
     Assembler(int argc, char **argv);
+
+    bool Assemble();
 };

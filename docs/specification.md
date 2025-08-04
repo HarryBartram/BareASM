@@ -6,6 +6,14 @@ Bare assembler or BareASM is an assembler designed by [The Routinely Interrupts]
 
 Output formats include: binary and ELF. Only targets x86-64 machines but can produce 16-bit, 32-bit and 64-bit code.
 
+## Preprocessor ##
+
+Macros must exist on their own line and may be preceded by whitespace, which in this case is strictly defined as ' ' and '\t' characters.
+
+The preprocessor uses a separate lexical analyser than the assembler, such that any non valid symbol characters as well as strings and the '#' character are interpreted as whitespace. This means that '#define,()SYMBOL+-"value"' is technically a valid statement in the preprocessor although using it this way is discouraged.
+
+Comments can still exist on lines that contain macros.
+
 ## Syntax ##
 
 ### Symbols ###
@@ -107,10 +115,3 @@ Full list:
  - DW - Declare words, end is padded to 2 bytes for ascii.
  - DD - Declare double words, end is padded to 4 bytes for ascii.
  - DQ - Declare quad words, end is padded to 8 bytes for ascii.
-
-### Conventional Instructions ###
-
-Full list:
- - ADD
- - CALL
- - HLT
