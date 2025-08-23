@@ -121,7 +121,7 @@ std::string Preprocessor::ResolveSymbolsInLine(std::string line)
     bool escaped = false;
     for (int character = 0; character < line.length(); character++) {
         // Symbol valid characters
-        if (!inQuotes && (std::isalnum(line[character]) || line[character] == '_' || line[character] == '!' || line[character] == '?' || line[character] == '#')) {
+        if (!inQuotes && (std::isalnum(line[character]) || line[character] == '_' || line[character] == '!' || line[character] == '?' || line[character] == '#' || line[character] == '.')) {
             symbol += line[character];
         } else if (!inQuotes && line[character] == '"') {           // Starting Quotes
             symbol = "";
@@ -334,10 +334,6 @@ bool Preprocessor::Preprocess()
                 break;
             }
         }
-    }
-
-    for (int line = 0; line < this->data.size(); line++) {
-        std::cout << this->data[line] << std::endl;
     }
 
     return true;

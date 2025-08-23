@@ -1,5 +1,6 @@
 #include "../inc/assembler.hpp"
 #include "../inc/preprocessor.hpp"
+#include "../inc/lexer.hpp"
 
 #include <cstring>
 #include <iostream>
@@ -89,15 +90,30 @@ Assembler::Assembler(int argc, char **argv) : success(true), inputFilename(""), 
 
 bool Assembler::Assemble()
 {
-    Preprocessor preprocessor = Preprocessor(this->inputFilename);
-    if (!preprocessor.success) {
+    // Preprocess
+    Preprocessor *preprocessor = new Preprocessor(this->inputFilename);
+    if (!preprocessor->success) {
         std::cerr << "ERROR: Input file, " << this->inputFilename << ", does not exist or is inaccessible" << std::endl;
         return false;
     }
 
-    if (!preprocessor.Preprocess()) {
+    if (!preprocessor->Preprocess()) {
         return false;
     }
+
+    // Lexically analyse
+    Lexer *lexer = new Lexer(preprocessor->data);
+    if (!lexer->Analyse()) {
+        return false;
+    }
+
+    // Delete preprocessor
+    delete preprocessor;
+
+    // Syntax analysis here
+
+    // Delete lexer
+    delete lexer;
 
     return true;
 }
